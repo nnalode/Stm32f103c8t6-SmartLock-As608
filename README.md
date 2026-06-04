@@ -59,7 +59,6 @@
 - **云平台**：OneNET（MQTT 协议）
 - **手机端**：微信小程序
 
-### 目录结构（部分关键文件）
 ├── Core/ # 主程序与中断服务
 │ ├── main.c # 主循环、状态机
 │ ├── main_interface.c# 主界面/密码验证/刷卡/指纹验证
@@ -83,7 +82,6 @@
 │ └── delay.c # 阻塞延时
 └── README.md # 本文件
 
-text
 
 ### 关键软件流程
 
@@ -96,17 +94,3 @@ text
 4. **安全机制**：连续错误计数器 → 达阈值（5次）→ 锁定 + 报警 + 上报云端。
 5. **远程监控**：开锁事件（时间/方式/ID）→ JSON 封装 → MQTT 发布到 OneNET → 小程序实时展示。
 
----
-
-cd stm32-smart-lock
-2. 硬件连接（关键引脚对照）
-外设	STM32 引脚	备注
-AS608	PA9 (TX), PA10 (RX)	UART1，另接触摸中断 PB9
-RC522	PA5(SCK),PA6(MISO),PA7(MOSI),PB0(NSS)	SPI1
-OLED	PB6(SCL), PB7(SDA)	I2C1
-ESP8266	PA2(TX), PA3(RX)	UART2
-DS1302	PB5(RST), PB4(DAT), PB3(CLK)	三线接口
-AT24C02	PB6(SCL), PB7(SDA)	与 OLED 共用 I2C1
-4×4 键盘	行: PB12~15 列: PB8,PB9,PC14,PC15	软件扫描
-继电器	PA12	高电平有效
-蜂鸣器	PA11	高电平有效
